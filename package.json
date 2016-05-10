@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "A lightweight wrapper for the Wrike API.",
   "main": "index.js",
+  "repository": "treehouseaustin/wrike",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "authors": [
+    "Albert Martin <amartin@treehouse.co>"
+  ],
   "license": "MIT",
   "dependencies": {
     "request": "^2.72.0"
