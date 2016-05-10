@@ -1,0 +1,24 @@
+{
+  "name": "wrike",
+  "version": "1.0.0",
+  "description": "A lightweight wrapper for the Wrike API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "team-guidelines": "github:treehouseaustin/team-guidelines"
+  },
+  "engines": {
+    "node": ">= 6"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/team-guidelines/.eslintrc.js"
+    ]
+  }
+}
