@@ -20,4 +20,30 @@ WrikeAPI.prototype.get = function(endpoint, options) {
   });
 };
 
+// @see https://developers.wrike.com/documentation/api/methods/query-dependencies
+WrikeAPI.prototype.getDependencies = function(taskOrDependencies, options) {
+  var endpoint = Array.isArray(taskOrDependencies) ? `dependencies/${taskOrDependencies.join(',')}` : `tasks/${taskOrDependencies}/dependencies`;
+  return this.get(endpoint, options);
+};
+
+// @see https://developers.wrike.com/documentation/api/methods/get-folder-tree
+WrikeAPI.prototype.getFolders = function(folderId, options) {
+  var endpoint = this.account ? `accounts/${this.account}/folders` : 'folders';
+  if (folderId) endpoint = `folders/${folderId}/folders`;
+  return this.get(endpoint, options);
+};
+
+// @see https://developers.wrike.com/documentation/api/methods/query-tasks
+WrikeAPI.prototype.getTask = function(taskIds, options) {
+  if (Array.isArray(taskIds)) taskIds = taskIds.join(',');
+  return this.get(`tasks/${taskIds}`, options);
+};
+
+// @see https://developers.wrike.com/documentation/api/methods/query-tasks
+WrikeAPI.prototype.getTasks = function(folderId, options) {
+  var endpoint = this.account ? `accounts/${this.account}/tasks` : 'tasks';
+  if (folderId) endpoint = `folders/${folderId}/tasks`;
+  return this.get(endpoint, options);
+};
+
 module.exports = WrikeAPI;
