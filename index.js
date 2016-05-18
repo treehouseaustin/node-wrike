@@ -20,9 +20,24 @@ WrikeAPI.prototype.get = function(endpoint, options) {
   });
 };
 
+// @see https://developers.wrike.com/documentation/api/methods/get-comments
+WrikeAPI.prototype.getComments = function(id, scope, options) {
+  var endpoint = 'comments';
+  if (scope && id) {
+    endpoint = `${scope}/${id}/comments`;
+  }
+  return this.get(endpoint, options);
+};
+
 // @see https://developers.wrike.com/documentation/api/methods/query-dependencies
 WrikeAPI.prototype.getDependencies = function(taskOrDependencies, options) {
   var endpoint = Array.isArray(taskOrDependencies) ? `dependencies/${taskOrDependencies.join(',')}` : `tasks/${taskOrDependencies}/dependencies`;
+  return this.get(endpoint, options);
+};
+
+// @see https://developers.wrike.com/documentation/api/methods/get-folder
+WrikeAPI.prototype.getFolder = function(folderIds, options) {
+  var endpoint = `folders/${Array.isArray(folderIds) ? folderIds.join(',') : folderIds}`;
   return this.get(endpoint, options);
 };
 
