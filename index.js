@@ -61,4 +61,9 @@ WrikeAPI.prototype.getTasks = function(folderId, options) {
   return this.get(endpoint, options);
 };
 
+// @see https://developers.wrike.com/documentation/api/methods/query-user
+WrikeAPI.prototype.getUser = function(userId) {
+  return this.get(`users/${userId}`);
+};
+
 module.exports = WrikeAPI;
